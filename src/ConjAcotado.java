@@ -61,7 +61,7 @@ public class ConjAcotado {
 	}
 	
 	public void eliminar(int elem){
-		idx[elem] = (Integer) null;
+		idx[elem] = 0;
 		elems.remove(elem);
 	}
 	
@@ -69,13 +69,18 @@ public class ConjAcotado {
 
 		ConjAcotado con = new ConjAcotado(6);
 		con.agregar(5);
+		/*
 		Iterator<Integer> iter = con.iterator();
 		while(iter.hasNext()){
 			int n = iter.next();
 			System.out.println(n);
 		}
 		
+		*/
 		
+		if(con.pertenece(5)){
+			con.eliminar(5);
+		}
 		
 		
 	}
