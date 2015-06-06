@@ -1,38 +1,51 @@
 import java.util.Iterator;
+import java.util.ListIterator;
 
 
 public class IteratorConj implements Iterator<Integer>{
 	
 	
 	private ConjAcotado conj;
-	private int actual = 0;
-
-	public ConjAcotado getConj() {
-		return conj;
-	}
-
-	public void setConj(ConjAcotado conj) {
+	private int actual;
+	
+	public IteratorConj(ConjAcotado conj) {
 		this.conj = conj;
 	}
+	
+	
+	private ListIterator<Integer> getActualIterator(){
+		return conj.getIdx().elementAt(actual);
+	}
+
 
 	@Override
 	public boolean hasNext() {
-		int size = conj.getIdx().length - 1;
-		return (actual < size);
+		ListIterator<Integer> iter = getActualIterator();
+		return iter.hasNext();
 	}
+
 
 	@Override
 	public Integer next() {
+		ListIterator<Integer> iter = getActualIterator();
+		Integer res = iter.next();
 		actual++;
-		return conj.getIdx()[actual];
+		return res;
 	}
-	
-	
+
 
 	@Override
 	public void remove() {
-		conj.getElems().remove(actual);
-		conj.getIdx()[actual]= 0;
+		ListIterator<Integer> iter = getActualIterator();
+		iter.remove();
 	}
 
+
+	
+
+	
+	
+	
+
+	
 }
